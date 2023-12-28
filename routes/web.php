@@ -63,24 +63,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class);
 
-Route::get('/shop',ShopComponent::class);
+Route::get('/shop', ShopComponent::class);
 
-Route::get('/cart',CartComponent::class)->name('product.cart');
+Route::get('/cart', CartComponent::class)->name('product.cart');
 
-Route::get('/checkout',CheckoutComponent::class);
+Route::get('/checkout', CheckoutComponent::class);
 
 Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
 
-Route::get('/product-category/{category_slug}',CategoryComponent::class)->name('product.category');
+Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 
-Route::get('/search',SearchComponent::class)->name('product.search');
-Route::get('/wishlist',LivewireWishlistComponent::class)->name('product.wishlist');
-Route::get('/terms',TermConditionComponent::class)->name('terms');
-Route::get('/return-policy',ReturnPolicyComponent::class)->name('return-policy');
-Route::get('/privacy-policy',PrivacyPolicyComponent::class)->name('privacy-policy');
-Route::get('/support-policy',SupportPolicyComponent::class)->name('support-policy');
-Route::get('/brands',BrandsComponent::class)->name('brands');
-Route::get('/categories',CategoriesComponent::class)->name('categories');
+Route::get('/search', SearchComponent::class)->name('product.search');
+Route::get('/wishlist', LivewireWishlistComponent::class)->name('product.wishlist');
+Route::get('/terms', TermConditionComponent::class)->name('terms');
+Route::get('/return-policy', ReturnPolicyComponent::class)->name('return-policy');
+Route::get('/privacy-policy', PrivacyPolicyComponent::class)->name('privacy-policy');
+Route::get('/support-policy', SupportPolicyComponent::class)->name('support-policy');
+Route::get('/brands', BrandsComponent::class)->name('brands');
+Route::get('/categories', CategoriesComponent::class)->name('categories');
 
 // Route::middleware([
 //     'auth:sanctum',
@@ -92,54 +92,45 @@ Route::get('/categories',CategoriesComponent::class)->name('categories');
 //     })->name('dashboard');
 // });
 // for customer
-Route::prefix('customer')->middleware(['auth:sanctum','verified'])->group(function () {
-   Route::get('/dashboard',UserDashboardComponent::class)->name('customer.dashboard');
+Route::prefix('customer')->middleware(['auth:sanctum', 'verified'])->group(function () {
+   Route::get('/dashboard', UserDashboardComponent::class)->name('customer.dashboard');
 });
 
 // for seller
-Route::prefix('seller')->middleware(['auth:sanctum','verified'])->group(function () {
-   Route::get('/dashboard',UserDashboardComponent::class)->name('seller.dashboard');
-   Route::get('/purchaseHistory',PurchaseHistoryComponent::class)->name('seller.purchaseHistory');
-   Route::get('/refundRequest',SendRefundRequestComponent::class)->name('seller.refundRequest');
-   Route::get('/wishlist',WishListComponent::class)->name('seller.wishlist');
-   Route::get('/compare',CompareComponent::class)->name('seller.compare');
-   Route::get('/packages',PackagesComponent::class)->name('seller.packages');
-   Route::get('/uploadFiles',UploadFilesComponent::class)->name('seller.uploadFiles');
-   Route::get('/orders',OrdersComponent::class)->name('seller.orders');
-   Route::get('/recieveRefundRequest',RecieveRefundRequestComponent::class)->name('seller.recieveRefundRequest');
-   Route::get('/shopSetting',ShopSettingComponent::class)->name('seller.shopSetting');
-   Route::get('/affiliate',AffiliateComponent::class)->name('seller.affiliate');
-   Route::get('/myWallet',MyWalletComponent::class)->name('seller.myWallet');
-   Route::get('/supportTicket',SupportTicketComponent::class)->name('seller.supportTicket');
-   Route::get('/manageProfile',MyProfileComponent::class)->name('seller.manageProfile');
-
-
-
-
-
-
-
-
-
+Route::prefix('seller')->middleware(['auth:sanctum', 'verified'])->group(function () {
+   Route::get('/dashboard', UserDashboardComponent::class)->name('seller.dashboard');
+   Route::get('/purchaseHistory', PurchaseHistoryComponent::class)->name('seller.purchaseHistory');
+   Route::get('/refundRequest', SendRefundRequestComponent::class)->name('seller.refundRequest');
+   Route::get('/wishlist', WishListComponent::class)->name('seller.wishlist');
+   Route::get('/compare', CompareComponent::class)->name('seller.compare');
+   Route::get('/packages', PackagesComponent::class)->name('seller.packages');
+   Route::get('/uploadFiles', UploadFilesComponent::class)->name('seller.uploadFiles');
+   Route::get('/orders', OrdersComponent::class)->name('seller.orders');
+   Route::get('/recieveRefundRequest', RecieveRefundRequestComponent::class)->name('seller.recieveRefundRequest');
+   Route::get('/shopSetting', ShopSettingComponent::class)->name('seller.shopSetting');
+   Route::get('/affiliate', AffiliateComponent::class)->name('seller.affiliate');
+   Route::get('/myWallet', MyWalletComponent::class)->name('seller.myWallet');
+   Route::get('/supportTicket', SupportTicketComponent::class)->name('seller.supportTicket');
+   Route::get('/manageProfile', MyProfileComponent::class)->name('seller.manageProfile');
 });
 
 // for admin
-Route::middleware(['auth:sanctum','verified','authadmin'])->group(function () {
-   Route::get('/admin/dashboard',AdminDashboardComponent::class)->name('admin.dashboard');
-   Route::get('/admin/categories',AdminCategoryComponent::class)->name('admin.categories');
-   Route::get('/admin/category/add',AdminAddCategoryComponent::class)->name('admin.addcategory');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+   Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
+   Route::get('/admin/categories', AdminCategoryComponent::class)->name('admin.categories');
+   Route::get('/admin/category/add', AdminAddCategoryComponent::class)->name('admin.addcategory');
    Route::get('/admin/category/edit/{category_slug}', AdminEditCategoryComponent::class)->name('admin.editcategory');
-   Route::get('/admin/products',AdminProductComponent::class)->name('admin.products');
-   Route::get('/admin/product/add',AdminAddProductComponent::class)->name('admin.addproduct');
-   Route::get('/admin/product/edit/{product_slug}',AdminEditProductComponent::class)->name('admin.editproduct');
-   Route::get('/admin/brands',AdminBrandsComponent::class)->name('admin.brands');
-   Route::get('/admin/brands/add',AdminAddBrandComponent::class)->name('admin.addbrand');
+   Route::get('/admin/products', AdminProductComponent::class)->name('admin.products');
+   Route::get('/admin/product/add', AdminAddProductComponent::class)->name('admin.addproduct');
+   Route::get('/admin/product/edit/{product_slug}', AdminEditProductComponent::class)->name('admin.editproduct');
+   Route::get('/admin/brands', AdminBrandsComponent::class)->name('admin.brands');
+   Route::get('/admin/brands/add', AdminAddBrandComponent::class)->name('admin.addbrand');
    Route::get('/admin/brand/edit/{id}', AdminEditBrandComponent::class)->name('admin.editbrand');
-   Route::get('/admin/slider',AdminHomeSliderComponent::class)->name('admin.homeslider');
-   Route::get('/admin/slider/add',AdminAddHomeSliderComponent::class)->name('admin.addhomeslider');
-   Route::get('/admin/slider/edit/{slide_id}',AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
-   Route::get('/admin/home-categories',AdminHomeCategoryComponent::class)->name('admin.homecategories');
+   Route::get('/admin/slider', AdminHomeSliderComponent::class)->name('admin.homeslider');
+   Route::get('/admin/slider/add', AdminAddHomeSliderComponent::class)->name('admin.addhomeslider');
+   Route::get('/admin/slider/edit/{slide_id}', AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
+   Route::get('/admin/home-categories', AdminHomeCategoryComponent::class)->name('admin.homecategories');
 
-   Route::get('/admin/blogs',AdminBlogsComponent::class)->name('admin.blogs');
-   Route::get('/admin/addBlog',AdminAddBlogComponent::class)->name('admin.addBlog');
+   Route::get('/admin/blogs', AdminBlogsComponent::class)->name('admin.blogs');
+   Route::get('/admin/addBlog', AdminAddBlogComponent::class)->name('admin.addBlog');
 });
