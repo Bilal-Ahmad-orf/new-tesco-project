@@ -11,5 +11,5 @@
                 <x-welcome />
             </div>
         </div>
-    </div>fahad
+    </div>
 </x-app-layout>
