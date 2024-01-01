@@ -27,7 +27,7 @@ use App\Livewire\PrivacyPolicyComponent;
 use App\Livewire\ReturnPolicyComponent;
 use App\Livewire\SearchComponent;
 use App\Livewire\ShopComponent;
-use App\Livewire\ShopForm;
+use App\Livewire\Shop\Create as ShopController;
 use App\Livewire\SupportPolicyComponent;
 use App\Livewire\TermConditionComponent;
 use App\Livewire\User\AffiliateComponent;
@@ -58,13 +58,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('welcome', function () {
-//     return view('welcome');
-// });
+Route::get('welcome', function () {
+   return view('welcome');
+});
 
 Route::get('/', HomeController::class);
-Route::get('/shops/create', ShopForm::class);
-Route::post('/shops/create', ShopForm::class)->name("shop.create");
+Route::view('/shops/create', "shop.create")->name('shop.create');
+// Route::post('/shops/create', ShopForm::class)->name("shop.create");
 
 Route::get('/shop', ShopComponent::class);
 

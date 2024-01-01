@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("emg_email")->nullable();
             $table->string("address");
             $table->string("invite_Code")->default(1234);
+            $table->boolean("is_verify")->default(false);
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('user_products', function (Blueprint $table) {
             $table->id();
+            $table->string("image")->nullable();
+            $table->text("description")->nullable();
+            $table->decimal("price", 10, 2)->nullable();
+            $table->decimal("sale_price", 10, 2)->nullable();
+            $table->decimal("discount_price", 10, 2)->nullable();
+            $table->boolean("on_sale")->nullable()->default(false);
+            $table->enum("status", ["active", "in_active", "cancelled", "approved"])->default("in_active");
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->timestamps();
